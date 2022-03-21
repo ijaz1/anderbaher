@@ -1,0 +1,249 @@
+{% extends "employerMaster.html" %}
+{% block content %}
+{% load static %}
+
+
+
+<div class="container-fluid pt-2 px-5">
+
+    <!-- col box start -->
+
+    <div class="cardBox">
+        <div class="card">
+            <div>
+                <div class="numbers">23</div>
+                <div class="cardName">Todays Works</div>
+            </div>
+            <div class="iconBx">
+                <i class="fa-regular fa-eye"></i>
+            </div>
+        </div>
+
+        <div class="card">
+            <div>
+                <div class="numbers">18</div>
+                <div class="cardName">Work Completed</div>
+            </div>
+            <div class="iconBx">
+                <i class="fa-solid fa-user-check"></i>
+            </div>
+        </div>
+
+        <div class="card">
+            <div>
+                <div class="numbers">1,999</div>
+                <div class="cardName">Total Works</div>
+            </div>
+            <div class="iconBx">
+                <i class="fa-solid fa-eye"></i>
+            </div>
+        </div>
+
+        <div class="card">
+            <div>
+                <div class="numbers">498</div>
+                <div class="cardName">Total Work Completed</div>
+            </div>
+            <div class="iconBx">
+                <i class="fa-solid fa-users"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- col box end -->
+
+    <!-- employer details -->
+
+    <div class="employer-section">
+
+
+        <!-- emplyer_details start -->
+        <div class="employer-card">
+
+            <div class="upload"
+                style="background-image: url('{% static 'images/photo_upload.jpg' %}'); background-repeat: no-repeat;background-size: 100%">
+                <img src="/static/images/{{employer.photo}}" alt="" width="100px" class="profile-photo" id="output">
+            </div>
+            <div>
+                <center>
+                    <h5 class="pt-1">{{employer.first_Name}}&nbsp;{{employer.last_Name}}</h5>
+                    <h6>{{employer.title_Position}}&nbsp;{{employer.job_Title}}</h6>
+                </center>
+            </div>
+            <center>
+                <div class="d-inline-flex">
+                    <div class="chart">
+                        <canvas id="donut" class=""></canvas>
+                    </div>
+                    <div class="chart">
+                        <canvas id="donutt" class=""></canvas>
+                    </div>
+                    <div class="chart">
+                        <canvas id="donuttt" class=""></canvas>
+                    </div>
+                </div>
+            </center>
+            <hr>
+            <div class="recent-work pt-3">
+                <h6>Recent Activities</h6>
+                <table class="table table-borderless">
+                    <tbody>
+                        <tr>
+                            <td><i class="fa-solid fa-share fs-5"></i></td>
+                            <td>ii</td>
+                            <td>hh</td>
+                            <td>nn</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- emplyer_details end -->
+
+
+        <!-- Duty Start -->
+        <div class="employer-card">
+
+            <center>
+                <h4>Work</h4>
+            </center>
+            <table class="table table-borderless">
+                <thead>
+                    <tr>
+                        <th>work time</th>
+                        <th>Starting Time</th>
+                        <th>Ending Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>8 hours</td>
+                        <td>9:00am</td>
+                        <td>6:00pm</td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="btn btn-success w-100" id="start_work" onclick="fnStart_work()">Start Work</button>
+            <button class="btn btn-danger w-100" id="end_work" style="display: none;">End Work</button>
+
+            <table class="table mt-2" id="duty_table">
+                <thead class="table-dark table-sm">
+                    <tr>
+                        <th>Date</th>
+                        <th>Started Time</th>
+                        <th>End Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+
+        </div>
+        <!-- duty ends -->
+    </div>
+    <script>
+        $('#start_work').click(function () {
+            $('#start_work').hide()
+            $('#end_work').show()
+        })
+        $('#end_work').click(function(){
+            $('#end_work').hide()
+            $('#start_work').show()
+        })
+    </script>
+
+    <!-- company live & company Links starts -->
+    <div class="leave-and-links">
+
+
+        <!-- company leave chart start -->
+        <div class="employer-card">
+            <center>
+                <h4>
+                    Holiday Chart
+                </h4>
+            </center>
+        </div>
+        <!-- company leave chart end -->
+
+
+        <!-- links start -->
+        <div class="employer-card">
+            <center>
+                <h4>
+                    Quick Links
+                </h4>
+            </center>
+        </div>
+        <!-- links ends -->
+
+        <!-- company live and links ends -->
+
+
+    </div>
+
+
+
+    <!-- work status start -->
+
+    <div class="container-fluid pt-3 pb-5 px-5">
+        <div class="container-fluid px-5">
+            <div class="profile-box">
+                <center>
+                    <h4>Work Status</h4>
+                </center>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Employer Name</th>
+                                <th>Work Status</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- work status end -->
+
+
+
+    <div class="container-fluid">
+        <h1>Welcome..</h1>
+        <h5 class="text-uppercase">{{employer.first_Name}}</h5>
+    </div>
+
+<script>
+    $.ajaxSetup({
+        headers:{"X-CSRFToken":'{{csrf_token}}'}
+    })
+    function fnStart_work(){
+        $.ajax({
+            url:'{% url "work_start" %}',
+            type:'POST',
+            data:{},
+            success:function(response){
+                alert(response.start)
+                fnload()
+            }
+        })
+    }
+
+    function fnload(){
+        $.ajax({
+            url:'{% url "onLoad" %}',
+            type:'GET',
+            data:{},
+            success:function(response){
+                $('#duty_table').append("<tr class='dt'><td>"+response.work_data[0].current_date+"</td><td>"+response.work_data[0].current_time+"</td><td>"+response.work_data[0].end_time+"</td></tr>")
+            }
+        })
+    }
+</script>
+
+    {% endblock %}

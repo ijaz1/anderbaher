@@ -1,0 +1,290 @@
+{% extends "index_Master.html" %}
+{% block content %}
+{% load static %}
+
+<!-- home starts -->
+
+<div class="row home"
+    style="background-image: url('{% static 'images/background_image_edited_2.png' %}'); background-repeat: no-repeat;background-size: 100%">
+    <div class="col-8 home-first-div">
+        <h2 class="home-content">OUTDOOR MAKEOVER EXPERTS</h2>
+        <br>
+        <button class="home-content-button home-buttons">BOOK A DEMO CONSULTATION</button>
+    </div>
+    <div class="col-3 home-form" style="margin-top: 25px;">
+        <center>
+            <h3>Get An Estimate</h3>
+            <form action="{% url 'book_online_consultation' %}" method="POST">
+                {% csrf_token %}
+                <input id="padding-input" class="home-input" type="text" placeholder="NAME" name="name">
+                <input id="padding-input" class="home-input" type="text" placeholder="Email ID" name="email">
+                <input id="padding-input" class="home-input" type="text" placeholder="Phone Number" name="phone">
+                <input id="padding-input" class="home-input" type="text" placeholder="Villa / Apartment / Property"
+                    name="villa_apartment_property">
+                <input id="padding-input" class="home-input" type="text" placeholder="CITY / ZIP CODE" name="city_zip">
+                <select name="estimated_budget" id="padding-input" class="home-select-1">
+                    <option selected value="">Estimated Budget</option>
+                    <option value="2 to 5 lack">2 to 5 lack</option>
+                    <option value="5 to 8 lack">5 to 8 lack</option>
+                    <option value="8 to 10 lack">8 to 10 lack</option>
+                    <option value="10 to 15 lack">10 to 15 lack</option>
+                    <option value="15 to 20 lack">15 to 20 lack</option>
+                </select>
+                <select name="when_to_start_work" id="padding-input" class="home-select-2">
+                    <option selected value="">When to start work</option>
+                    <option value="immediatly">immediately</option>
+                    <option value="with in 2 week">with in 2 week</option>
+                    <option value="with in 1 month">with in 1 month</option>
+                    <option value="with in 2 month">with in 2 month</option>
+                    <option value="more than three month">more than three month</option>
+                </select>
+                <button id="padding-input" type="submit" class="home-consult-button home-buttons">BOOK ONLINE
+                    CONSULTATION</button>
+    </div>
+    </form>
+    </center>
+</div>
+</div>
+
+<!-- home end -->
+
+<!-- about us start -->
+<div class="d-inline-flex about-us" id="about-us">
+    <div class="col-lg-6 p-5">
+        <div>
+            <center>
+                <h1>ABOUT US</h1>
+            </center>
+        </div>
+        <div class="p-5">
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere, quidem placeat. Error corporis
+                libero, nostrum deleniti sequi minima illo, debitis unde ipsam aliquam adipisci voluptates placeat,
+                blanditiis provident sapiente esse.<br><br><button class="abbt" data-bs-target="#contactus"
+                    data-bs-toggle="modal"
+                    style="background-color: #639e4a;border:none;border-radius: 50px;width: 150px;height: 34px;color: aliceblue;">CONTACT
+                    US</button></p>
+        </div>
+    </div>
+    <div class="col-lg-6 h-100">
+        <img src="{% static 'images/about.jpg' %}" alt="" width="600px">
+    </div>
+</div>
+
+<!-- about us end -->
+
+<!-- category start -->
+
+<div class="container-fluid" id="services">
+    <center>
+        <div class="row" id="movpic" style="background-color: whitesmoke">
+            <center>
+                <h1 class="pb-4" style="color: #639e4a;">OUR SERVICES</h1>
+                <img src="" alt="">
+            </center>
+            <div class="col box">
+                <a href="{% url 'image_gallery' %}"><img class="img-fluid im33" id="im33"
+                        src="{% static 'images/image2.png' %}" alt="" width="400px" /></a>
+                <h3 class="categori-name">Balcony</h3>
+            </div>
+            <div class="col box">
+                <a href="{% url 'garden' %}"><img class="img-fluid im33" id="im33" src="{% static 'images/1.png' %}"
+                        alt="" width="400px" /></a>
+                <h3 class="categori-name">Garden</h3>
+            </div>
+            <div class="col box">
+                <a href="{% url 'terrace' %}"><img class="img-fluid im33" id="im33" src="{% static 'images/2.jpeg' %}"
+                        alt="" width="400px" /></a>
+                <h3 class="categori-name">Terrace</h3>
+            </div>
+            <div class="row">
+                <div class="col box">
+                    <a href="{% url 'plants' %}"><img class="img-fluid im33" id="im33" src="{% static 'images/2.png' %}"
+                            alt="" width="400px" /></a>
+                    <h3 class="categori-name">Plants</h3>
+                </div>
+                <div class="col box">
+                    <a href="#waterservice"><img class="img-fluid im33" id="im33" src="{% static 'images/2.jpeg' %}"
+                            alt="" width="400px" /></a>
+                    <h3 class="categori-name">Garden</h3>
+                </div>
+                <div class="col box">
+                    <a href=""><img class="img-fluid im33" id="im33" src="{% static 'images/ter.jpeg' %}" alt=""
+                            width="400px" /></a>
+                    <h3 class="categori-name">Terrace</h3>
+                </div>
+            </div>
+        </div>
+    </center>
+</div>
+<!-- category end -->
+
+<!-- carousal start -->
+<div class="background-how-to-work">
+    <center>
+
+    </center>
+    <div class="carousal-how-to-work">
+        <center>
+            <h3 class="carousal-heading pt-5">HOW IT WORKS</h3>
+            <div id="carouselBasicExample" class="carousel slide carousel-dark carousel-fade" data-mdb-ride="carousel">
+                <!-- Indicators -->
+                <div class="carousel-indicators">
+                    <button type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide-to="1"
+                        aria-label="Slide 2"></button>
+                    <button type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide-to="2"
+                        aria-label="Slide 3"></button>
+                    <button type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide-to="3"
+                        aria-label="Slide 4"></button>
+                </div>
+
+                <!-- Inner -->
+                <div class="carousel-inner">
+                    <!-- Single item -->
+                    <div class="carousel-item active">
+                        <img src="{% static 'images/slider1.png' %}" class="d-block carousal-image"
+                            alt="Sunset Over the City" />
+                    </div>
+
+                    <!-- Single item -->
+                    <div class="carousel-item">
+                        <img src="{% static 'images/slider2.png' %}" class="d-block carousal-image"
+                            alt="Canyon at Nigh" />
+                    </div>
+
+                    <!-- Single item -->
+                    <div class="carousel-item">
+                        <img src="{% static 'images/slider3.png' %}" class="d-block carousal-image"
+                            alt="Cliff Above a Stormy Sea" />
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{% static 'images/slider4.png' %}" class="d-block carousal-image"
+                            alt="Cliff Above a Stormy Sea" />
+                    </div>
+                </div>
+                <!-- Inner -->
+
+                <!-- Controls -->
+                <button class="carousel-control-prev" type="button" data-mdb-target="#carouselBasicExample"
+                    data-mdb-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-mdb-target="#carouselBasicExample"
+                    data-mdb-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </center>
+    </div>
+</div>
+
+
+<!-- carousal end -->
+
+<!-- garantee start-->
+
+<div class="container-fluid why-should">
+    <div class="row ">
+        <center>
+            <h2 class="mt-5">WHY WOULD YOU CHOOSE US ?</h2>
+        </center>
+    </div>
+    <div class="row box-garentee-div">
+
+        <div class="col box box-garntee">
+            <center>
+                <i class="fa-solid fa-hand-holding-dollar fs-1 mt-5 why-should-icon"></i>
+                <br>
+                <br>
+                <h6>COST</h6>
+                <br>
+                <p>UP TO 10 YEAR ON PRODUCT AND SERVICE</p>
+            </center>
+
+        </div>
+
+
+        <div class="col box box-garntee">
+            <center>
+                <i class="fa-regular fa-hand-peace fs-1 mt-5 why-should-icon"></i>
+                <br>
+                <br>
+                <h6>WARRENTY</h6>
+                <br>
+                <p>UP TO 10 YEAR ON PRODUCT AND SERVICE</p>
+            </center>
+        </div>
+
+
+        <div class="col box box-garntee">
+            <center>
+                <i class="fa-solid fa-clock fs-1 mt-5 why-should-icon"></i>
+                <br>
+                <br>
+                <h6>TIME SAVING</h6>
+                <br>
+                <p>45 DAYS DELIVERY</p>
+            </center>
+        </div>
+    </div>
+    <div class="row box-garentee-div">
+
+        <div class="col box box-garntee">
+            <center>
+                <i class="fa-regular fa-face-laugh-beam fs-1 mt-5 why-should-icon"></i>
+                <br>
+                <br>
+                <h6>HASSLE FREE</h6>
+                <br>
+                <p style="font-size: 12px;">WE MAKE SURE THE HANDOVER DONE POST THE FINAL INSPECTION TO ENSURE ALL IS
+                    TAKEN CARE</p>
+            </center>
+
+        </div>
+
+
+        <div class="col box box-garntee">
+            <center>
+                <i class="fa-regular fa-hand-peace fs-1 mt-5 why-should-icon"></i>
+                <br>
+                <br>
+                <h6>WARRENTY</h6>
+                <br>
+                <p>UP TO 10 YEAR ON PRODUCT AND SERVICE</p>
+            </center>
+        </div>
+
+
+        <div class="col box box-garntee">
+            <center>
+                <i class="fa-solid fa-clock fs-1 mt-5 why-should-icon"></i>
+                <br>
+                <br>
+                <h6>TIME SAVING</h6>
+                <br>
+                <p>45 DAYS DELIVERY</p>
+            </center>
+        </div>
+    </div>
+</div>
+<!--garantee ends -->
+
+<!-- map start -->
+
+<div class="container-fluid">
+    <div class="py-3">
+        <center>
+            <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1817.8922306865327!2d77.59485251803987!3d13.016696699980551!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x9699f3ace4546bb3!2zMTPCsDAxJzAxLjQiTiA3N8KwMzUnNDQuNiJF!5e1!3m2!1sen!2sin!4v1647500327547!5m2!1sen!2sin"
+            width="1200px" height="450px" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </center>
+    </div>
+</div>
+
+<!-- map end -->
+
+
+{% endblock %}

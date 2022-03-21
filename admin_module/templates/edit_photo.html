@@ -1,0 +1,72 @@
+{% extends "master_admin.html" %}
+{% block content %}
+{% load static %}
+
+
+<div class="container-fluid pt-3 pb-5 px-5">
+    <div class="container-fluid px-5">
+
+        <!--user details start  -->
+
+        <div class="profile-box">
+            <center>
+                <h3>EDIT PHOTO</h3>
+            </center>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>PHOTO</th>
+                            <th>CHANGE PHOTO</th>
+                            <th>CHANGE TITLE</th>
+                            <th>CHANGE CATEGORY</th>
+                            <th>EDIT</th>
+                            <th>DELETE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for view_photo in view_photo %}
+                        <form action="{% url 'update_edit_photo' %}" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <tr>
+                                <td>
+                                    <h6>{{view_photo.id}}</h6>
+                                </td>
+                                <td>
+                                    <img src="/static/images/{{view_photo.photo}}" alt="" width="150px">
+                                </td>
+                                <td>
+                                    <input type="file" class="form-control" id="inputGroupFile02" name="photo"
+                                        onchange="loadFile(event)">
+                                    <img id="output" width="150px">
+                                </td>
+                                <td><input type="text" value="{{view_photo.title}}" name="title"></td>
+                                <td>
+                                    <select class="form-select" aria-label="Default select example" name="category">
+                                        <option selected value="{{view_photo.category}}">{{view_photo.category}}
+                                        </option>
+                                        <option value="balcony">Balcony</option>
+                                        <option value="garden">Garden</option>
+                                        <option value="terrace">Terrace</option>
+                                        <option value="plants">Plants</option>
+                                    </select>
+                                    <input type="text" value="{{view_photo.id}}" name="photo_id" hidden>
+                                </td>
+                                <td><button class="btn btn-primary" type="submit">CHANGE</button></td>
+                                <td><a href="{% url 'delete_photo' id=view_photo.id %}"
+                                        class="btn btn-danger">DELETE</a>
+                                </td>
+                            </tr>
+                        </form>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "master_admin.html" %}
+{% block content %}
+{% load static %}
+
+
+
+<div class="container-fluid pt-3 pb-5 px-5">
+    <div class="container-fluid px-5">
+
+        <!--user details start  -->
+
+        <div class="profile-box">
+            <!-- edit contact us start-->
+
+            <div class="container">
+                <h4 class="border-bottom p-4 ">Edit Contact Us</h4>
+                <form action="{% url 'edit_contact' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="d-flex p-2">
+                        <div class="col-md-3 px-3">
+                            <label for="inputEmail4" class="form-label">Whatsapp number</label>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" name="whatsapp"
+                                    aria-label="Text input with segmented dropdown button"
+                                    value="{{contact_us.whatsapp}}">
+                            </div>
+                        </div>
+                        <div class="col-md-3 px-3">
+                            <label for="inputEmail4" class="form-label">email Address</label>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" name="email"
+                                    aria-label="Text input with segmented dropdown button" value="{{contact_us.email}}">
+                            </div>
+                        </div>
+                        <div class="col-md-3 px-3">
+                            <label for="inputEmail4" class="form-label">phone number</label>
+                            <div class="input-group mb-3">
+                                <input type="text" name="phone" class="form-control"
+                                    aria-label="Text input with segmented dropdown button" value="{{contact_us.phone}}">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="px-4">
+                        <button class="btn btn-primary" type="submit">save changes</button>
+                    </div>
+                </form>
+
+            </div>
+
+            <!-- edit contact us end-->
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,468 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'images/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.css" rel="stylesheet" />
+
+    <title>Ander Baher</title>
+</head>
+
+<body>
+    <!-- nav start -->
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light " id="header">
+        <div class="container-fluid">
+            <a href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" alt="" width="150px"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 px-5">
+                    <li class="nav-item">
+                        <a class="text-decoration-none navUl active" id="a" aria-current="page"
+                            href="{% url 'index' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class=" navUl text-decoration-none" id="a" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class=" dropdown-toggle navUl text-decoration-none" id="a" href="#" id="navbarDropdown"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Catogery
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{% url 'terrace' %}">Terrace</a></li>
+                            <li><a class="dropdown-item" href="{% url 'image_gallery' %}">Balcony</a></li>
+                            <li><a class="dropdown-item" href="{% url 'garden' %}">Garden</a></li>
+                            <li><a class="dropdown-item" href="{% url 'plants' %}">Plants</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class=" navUl text-decoration-none" id="a" href="#">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class=" navUl text-decoration-none" id="a" href="#about-us">About us</a>
+                    </li>
+                </ul>
+
+                <button class="contactButton " data-bs-toggle="modal" data-bs-target="#contactus"><i
+                        class="fa-solid fa-phone"></i>&nbsp;&nbsp;&nbsp;contact us</button>
+                <button class="btn btn-danger btn-rounded" data-bs-toggle="modal" data-bs-target="#login"
+                    type="submit">Book
+                    A Demo Consultation</button>
+            </div>
+        </div>
+    </nav>
+    <!-- nav end -->
+    {% block content %}
+    {% endblock %}
+
+    <!-- fixed icon start-->
+
+    <div class="action" onclick="actionToggle()">
+        <span><i class="fa-solid fa-phone"></i></span>
+        <ul>
+            <li><a href="https://wa.me/{{contact_us.whatsapp}}"><i style="color: #4FCE5D; font-size: 40px;"
+                        class="fab fa-whatsapp-square"></i></a></li>
+            <li><a href="mailto:{{contact_us.email}}"><i style="color: #EA4335; font-size: 40px;"
+                        class="fas fa-envelope"></i></a></li>
+            <li><a href="tel:{{contact_us.phone}}"><i style="color: #3399ff; font-size: 40px;"
+                        class="fas fa-phone-volume"></i></a></li>
+        </ul>
+    </div>
+
+    <!-- fixed icon ends -->
+
+    <!-- footer start -->
+
+    <!-- Footer -->
+    <footer class="text-center text-lg-start bg-light text-muted">
+        <!-- Section: Social media -->
+        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+            <!-- Left -->
+            <div class="me-5 d-none d-lg-block">
+                <span>Get connected with us on social networks:</span>
+            </div>
+            <!-- Left -->
+
+            <!-- Right -->
+            <div>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-google"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <!-- Right -->
+        </section>
+        <!-- Section: Social media -->
+
+        <!-- Section: Links  -->
+        <section class="">
+            <div class="container text-center text-md-start mt-5">
+                <!-- Grid row -->
+                <div class="row mt-3">
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <!-- Logo -->
+                        <a href="#" class="mb-5 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+                            <img src="{% static 'images/logo.png' %}" alt="" width="130px">
+                        </a>
+                        <br><br>
+                        <p>
+                            We love our customers, so feel free to visit during normal business hours for exclusie
+                            solutions for garden landscaping, balcony design with expert landscape architects in
+                            Bengaluru
+                        </p>
+                        <p><a class="text-decoration-none foot-links" href="">TERRACE</a>&nbsp;|&nbsp;<a
+                                class="text-decoration-none foot-links" href="">BALCONY</a>&nbsp;|&nbsp;<a
+                                class="text-decoration-none foot-links" href="">GARDEN</a>&nbsp;|&nbsp;<a
+                                class="text-decoration-none foot-links" href="">PLANTS</a></p>
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4 text-black">
+                            Our Location
+                        </h6>
+                        <div class="d-inline-flex">
+                            <p class="mx-2">
+                                <i class="fa-solid fa-map-location-dot" style="color: #639e4a;"></i>
+                            </p>
+                            <p>
+                                16, 3rd Main Road, Srinivasa Layout, R.T Nagar, Bengaluru, Karnataka 560053, India
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4 g-0">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4 text-black">
+                            Contact Us
+                        </h6>
+                        <div class="d-inline-flex">
+                            <p>
+                                <i class="fa-solid fa-city me-3" style="color: #639e4a;"></i>
+                            </p>
+                            <p>
+                                16, 3rd Main Road, Srinivasa Layout,
+                                R.T Nagar, Bengaluru,
+                                Karnataka 560053, India
+                            </p>
+                        </div>
+
+                        <a class="text-decoration-none" href="mailto:{{contact_us.email}}">
+                            <p class="footer-contact ">
+                                <i class="fas fa-envelope me-3" style="color: #639e4a;"></i>
+                                {{contact_us.email}}
+                            </p>
+                        </a>
+                        <a class="text-decoration-none" href="tel:{{contact_us.phone}}">
+                            <p class="footer-contact "><i class="fas fa-phone me-3"
+                                    style="color: #639e4a;"></i>+91-{{contact_us.phone}}</p>
+                        </a>
+                        <p>
+                            <a class="text-decoration-none footer-terms" href="">TERMS & CONDITIONS</a>&nbsp;|&nbsp;<a
+                                class="text-decoration-none footer-terms" href="">PRIVACY POLICY</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+            </div>
+        </section>
+        <!-- Section: Links  -->
+
+        <!-- Copyright -->
+        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+            Copyright © 2022 Ander Baher Urban Services In Bangalore
+
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+
+    <!-- footer end -->
+
+    <!-- mesaage pass start -->
+
+    <script>
+        msgg = ('{% if messages %} {% for message in messages %} {{message}} {% endfor %} {% endif %}')
+        if (msgg == '') {
+            console.log('hi');
+        } else {
+            alert(msgg)
+        }
+    </script>
+
+    <!-- mesaage pass end -->
+
+    <!--Start of Tawk.to Script-->
+
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/622f0a931ffac05b1d7e743b/1fu3s2knj';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+
+    <!--end of Tawk.to Script-->
+
+
+    <script src="{% static 'js/index.js' %}"></script>
+    <!-- MDB -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.js"></script>
+</body>
+
+</html>
+
+
+<!-- contact us start -->
+<form action="" method="POST">
+    <div class="modal fade " id="contactus" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content contact-modal">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">CONTACT US</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-3">
+
+                    <a style="font-size: 60px; color: rgb(0, 255, 170);" class="p-3 modal-icon"
+                        href="https://wa.me/{{contact_us.whatsapp}}"><i class="fab fa-whatsapp-square"></i></a>
+                    <a style="font-size: 60px; color: crimson;" class="p-3 modal-icon"
+                        href="mailto:{{contact_us.email}}"><i class="fas fa-envelope"></i></a>
+                    <a style="font-size: x-large;" class="modal-icon" href="tel:{{contact_us.phone}}"><i
+                            class="fas fa-phone-volume">&nbsp;{{contact_us.phone}}</i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<!-- contact us end -->
+
+
+<!-- MDB SIGN IN SIGN UP START -->
+
+<!-- Pills navs -->
+<div class="modal fade" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="tab-login" data-mdb-toggle="pill" href="#pills-login" role="tab"
+                        aria-controls="pills-login" aria-selected="true">Login</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="tab-register" data-mdb-toggle="pill" href="#pills-register" role="tab"
+                        aria-controls="pills-register" aria-selected="false">Register</a>
+                </li>
+            </ul>
+            <!-- Pills navs -->
+
+            <!-- Pills content -->
+
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+                    <form class="" action="{% url 'logIn' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="text-center mb-3">
+                            <p>Sign in with:</p>
+                            <button type="button" class="btn btn-primary btn-floating mx-1">
+                                <i class="fab fa-facebook-f"></i>
+                            </button>
+
+                            <button type="button" class="btn btn-primary btn-floating mx-1">
+                                <i class="fab fa-google"></i>
+                            </button>
+
+                            <button type="button" class="btn btn-primary btn-floating mx-1">
+                                <i class="fab fa-twitter"></i>
+                            </button>
+
+                            <button type="button" class="btn btn-primary btn-floating mx-1">
+                                <i class="fab fa-github"></i>
+                            </button>
+                        </div>
+
+                        <p class="text-center">or:</p>
+
+                        <!-- Email input -->
+                        <div class="form-outline mb-4">
+                            <input type="email" name="email" id="loginName" class="form-control" />
+                            <label class="form-label" for="loginName">Email or username</label>
+                        </div>
+
+                        <!-- Password input -->
+                        <div class="form-outline mb-4">
+                            <input type="password" name="password" id="loginPassword" class="form-control" />
+                            <label class="form-label" for="loginPassword">Password</label>
+                        </div>
+
+                        <!-- 2 column grid layout -->
+                        <div class="row mb-4">
+                            <div class="col-md-6 d-flex justify-content-center">
+                                <!-- Checkbox -->
+                                <div class="form-check mb-3 mb-md-0">
+                                    <input class="form-check-input" type="checkbox" value="" id="loginCheck" checked />
+                                    <label class="form-check-label" for="loginCheck"> Remember me </label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 d-flex justify-content-center">
+                                <!-- Simple link -->
+                                <a href="#!">Forgot password?</a>
+                            </div>
+
+                        </div>
+
+                        <!-- Submit button -->
+                        <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+
+                        <!-- Register buttons -->
+                        <div class="text-center">
+                            <p>Not a member? <a href="#!">Register</a></p>
+                        </div>
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
+                    <form action="{% url 'sign_up' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="text-center mb-3">
+                            <p>Sign up with:</p>
+                            <button type="button" class="btn btn-primary btn-floating mx-1">
+                                <i class="fab fa-facebook-f"></i>
+                            </button>
+
+                            <button type="button" class="btn btn-primary btn-floating mx-1">
+                                <i class="fab fa-google"></i>
+                            </button>
+
+                            <button type="button" class="btn btn-primary btn-floating mx-1">
+                                <i class="fab fa-twitter"></i>
+                            </button>
+
+                            <button type="button" class="btn btn-primary btn-floating mx-1">
+                                <i class="fab fa-github"></i>
+                            </button>
+                        </div>
+
+                        <p class="text-center">or:</p>
+
+                        <!-- Name input -->
+                        <div class="form-outline mb-4">
+                            <input type="text" id="registerName" name="name" class="form-control" />
+                            <label class="form-label" for="registerName">Name</label>
+                        </div>
+
+                        <!-- Email input -->
+                        <div class="form-outline mb-4">
+                            <input type="email" id="registerEmail" name="email" class="form-control" />
+                            <label class="form-label" for="registerEmail">Email</label>
+                        </div>
+
+                        <!-- Password input -->
+                        <div class="form-outline mb-4">
+                            <input type="password" id="registerPassword" name="" class="form-control" />
+                            <label class="form-label" for="registerPassword">Password</label>
+                        </div>
+
+                        <!-- Repeat Password input -->
+                        <div class="form-outline mb-4">
+                            <input type="password" id="registerRepeatPassword" name="password" class="form-control" />
+                            <label class="form-label" for="registerRepeatPassword">Repeat password</label>
+                        </div>
+                        <!-- select -->
+                        <select class="form-select" name="what_are_you_looking_for" aria-label="Default select example">
+                            <option selected>What Are You Looking For</option>
+                            <option value="terrace">Terrace</option>
+                            <option value="balcony">Balcony</option>
+                            <option value="plants">Plants</option>
+                            <option value="garden">Garden</option>
+                        </select>
+
+                        <!-- Checkbox -->
+                        <div class="form-check d-flex justify-content-center mb-4">
+                            <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked
+                                aria-describedby="registerCheckHelpText" />
+                            <label class="form-check-label" for="registerCheck">
+                                I have read and agree to the terms
+                            </label>
+                        </div>
+
+                        <!-- Submit button -->
+                        <button type="submit" class="btn btn-primary btn-block mb-3">Sign in</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Pills content -->
+
+<!-- MDB SIGN IN SIGN UP END -->
+
+
+
+
+
+<!-- <div class="container">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <div class="col-md-4 d-flex align-items-center">
+            <a href="#" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+                <img src="{% static 'images/logo.png' %}" alt="" width="80px">
+            </a>
+            <span class="text-muted">&copy; 2022 Company, Inc</span>
+        </div>
+
+        <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+            <li class="ms-3"><a class="" href="#"><i class="fa-brands fa-twitter fs-4"></i></a></li>
+            <li class="ms-3"><a class="" href="#"><i class="fa-brands fa-instagram fs-4"></i></a></li>
+            <li class="ms-3"><a class="" href="#"><i class="fa-brands fa-facebook-f fs-4"></i></a></li>
+        </ul>
+    </footer>
+</div> -->

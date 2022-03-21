@@ -1,0 +1,65 @@
+{% extends "master_admin.html" %}
+{% block content %}
+{% load static %}
+
+
+
+<div class="container-fluid">
+    <div class="container-fluid">
+
+        <!--user details start  -->
+
+        <div class="profile-box">
+            <div class="">
+                <center>
+                    <h3 class="p-2">Edit Employees</h3>
+                </center>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Name</th>
+                            <th>Job Title</th>
+                            <th>E-mail</th>
+                            <th>phone Number</th>
+                            <th>address</th>
+                            <th>Gender</th>
+                            <th>Sign In E-mail</th>
+                            <th>Sign In Password</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for employer_details in employer_details %}
+                        <tr>
+                            <td>{{employer_details.first_Name}}&nbsp;{{employer_details.last_Name}}</td>
+                            <td>{{employer_details.job_Title}}&nbsp;{{employer_details.title_Position}}</td>
+                            <td>{{employer_details.personal_Email}}</td>
+                            <td>{{employer_details.phone_Number}}</td>
+                            <td>{{employer_details.address}}</td>
+                            <td>{{employer_details.gender}}</td>
+                            <td>{{employer_details.signIn_Email}}</td>
+                            <td>{{employer_details.signIn_Password}}</td>
+                            <td>
+                                <div class="d-inline-flex">
+                                    <a href="{% url 'view_edit_employer_admin' id=employer_details.id %}"
+                                        class="btn btn-primary btn-sm mx-1">Edit</a>
+                                    <a href="{% url 'terminate_employer' id=employer_details.id %}"
+                                        class="btn btn-danger btn-sm">Terminate</a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

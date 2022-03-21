@@ -1,0 +1,61 @@
+{% extends "master_admin.html" %}
+{% block content %}
+{% load static %}
+
+
+
+<div class="container-fluid pt-3 pb-5 px-5">
+    <div class="container-fluid px-5">
+
+        <!--user details start  -->
+
+        <div class="profile-box">
+            <div class="container-fluid">
+                <center>
+                    <h3 class="p-2">Terminated Employees</h3>
+                </center>
+            </div>
+
+            <div class="container-fluid table-responsive">
+                <table class="table">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Name</th>
+                            <th>Job Title</th>
+                            <th>E-mail</th>
+                            <th>phone Number</th>
+                            <th>address</th>
+                            <th>Gender</th>
+                            <th>Sign In E-mail</th>
+                            <th>Sign In Password</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for terminated_employees in terminated_employees %}
+                        <tr>
+                            <td>{{terminated_employees.first_Name}}&nbsp;{{terminated_employees.last_Name}}</td>
+                            <td>{{terminated_employees.job_Title}}&nbsp;{{terminated_employees.title_Position}}</td>
+                            <td>{{terminated_employees.personal_Email}}</td>
+                            <td>{{terminated_employees.phone_Number}}</td>
+                            <td>{{terminated_employees.address}}</td>
+                            <td>{{terminated_employees.gender}}</td>
+                            <td>{{terminated_employees.signIn_Email}}</td>
+                            <td>{{terminated_employees.signIn_Password}}</td>
+                            <td>
+                                <a href="{% url 'edit_terminated_employer_admin' id=terminated_employees.id %}"
+                                    class="btn btn-success btn-sm mx-1">Recover</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

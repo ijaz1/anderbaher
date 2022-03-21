@@ -1,0 +1,69 @@
+{% extends "master_admin.html" %}
+{% block content %}
+{% load static %}
+
+
+
+<div class="container-fluid pt-3 pb-5 px-2">
+    <div class="container-fluid">
+
+        <!--user details start  -->
+
+        <div class="profile-box">
+            <center><h4>New Estimations</h4></center>
+            <!-- navbar start -->
+            <header class="p-0 mb- ">
+                <div class="container-fluid">
+                    <div
+                        class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start header">
+                        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                            <li>
+                                <div class="p-2">
+                                    <a class="btn btn-success" href="{% url 'checked_clients' %}">Checked</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+
+            <!-- navbar end -->
+
+            <div class="container-fluid table-responsive">
+                <table class="table">
+                    <form action="">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>NAME</th>
+                                <th>E-MAIL ID</th>
+                                <th>PHONE NUMBER</th>
+                                <th>VILLA / APARTMENT / PROPERTY</th>
+                                <th>CITY / ZIP</th>
+                                <th>Estimated Budget</th>
+                                <th>When To Start</th>
+                                <th>Check Out</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for estimated_value in estimated_values %}
+                            <tr>
+                                <td>{{estimated_value.name}}</td>
+                                <td>{{estimated_value.email}}</td>
+                                <td>{{estimated_value.phone}}</td>
+                                <td>{{estimated_value.villa_apartment_property}}</td>
+                                <td>{{estimated_value.city_zip}}</td>
+                                <td>{{estimated_value.estimated_budget}}</td>
+                                <td>{{estimated_value.when_to_start_work}}</td>
+                                <td><a class="btn btn-primary"
+                                        href="{% url 'checkout' id=estimated_value.id %}">Check</a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </form>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "master_admin.html" %}
+{% block content %}
+{% load static %}
+
+
+<div class="container-fluid pt-3 pb-5 px-5">
+    <div class="container-fluid px-5">
+
+        <!--user details start  -->
+
+        <div class="profile-box">
+            <center>
+                <h3>View Deleted Photo</h3>
+            </center>
+
+            <table class="table">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>PHOTO</th>
+                        <th>TITLE</th>
+                        <th>CATEGORY</th>
+                        <th>RECOVER</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for view_deleted in view_deleted %}
+                    <form action="{% url 'recover_deleted_photo' %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <tr>
+                            <td>
+                                <h6>{{view_deleted.id}}</h6>
+                            </td>
+                            <td>
+                                <img src="/static/images/{{view_deleted.photo}}" alt="" width="150px">
+                            </td>
+                            <td>
+                                <h6>{{view_deleted.title}}</h6>
+                            </td>
+                            <td>
+                                <h6>{{view_deleted.category}}</h6>
+                                <input type="text" value="{{view_deleted.id}}" name="photo_id" hidden>
+                            </td>
+                            <td><button class="btn recoverButton" type="submit">RECOVER</button></td>
+                        </tr>
+                    </form>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends "master_admin.html" %}
+{% block content %}
+{% load static %}
+
+
+<div class="container-fluid pt-3 px-5">
+    <div class="container-fluid px-5">
+
+        <!--user details start  -->
+
+        <div class="profile-box">
+            <div class="container">
+                <center>
+                    <h3 class="pt-3">View Employees</h3>
+                </center>
+                <!-- header start -->
+                <header class="p-0 mb- ">
+                    <div class="container-fluid">
+                        <div
+                            class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start header">
+
+                            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                                <li>
+                                    <div class="dropdown text-end p-2">
+                                        <a href="#"
+                                            class="d-block link-dark text-decoration-none dropdown-toggle btn btn-success"
+                                            id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Add Employer
+                                        </a>
+                                        <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+                                            <li><a class="dropdown-item" href="{% url 'add_employer' %}">Add
+                                                    Employer</a></li>
+                                            <li><a class="dropdown-item" href="{% url 'edit_employer_admin' %}">Edit
+                                                    Employees</a>
+                                            </li>
+                                            <li><a class="dropdown-item" href="{% url 'view_employer_bank' %}">View
+                                                    Employees Bank
+                                                    Details</a></li>
+                                            <li><a class="dropdown-item"
+                                                    href="{% url 'view_terminated_employees' %}">View
+                                                    Terminated Employees</a></li>
+                                            <li><a class="dropdown-item"
+                                                    href="{% url 'view_terminated_employer_bank' %}">View
+                                                    Terminated Employees Bank</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </header>
+                <!-- header end -->
+                <table class="table">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Name</th>
+                            <th>Title</th>
+                            <th>Status</th>
+                            <th>Position</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for view_employees in view_employees %}
+                        <tr>
+                            <td><img class="employer_photo" src="/static/images/{{view_employees.photo}}"
+                                    alt="">&nbsp;{{view_employees.first_Name}}&nbsp;{{view_employees.last_Name}}</td>
+                            <td>{{view_employees.job_Title}}</td>
+                            <td></td>
+                            <td>{{view_employees.title_Position}}</td>
+                            <td>{{view_employees.first_Name}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

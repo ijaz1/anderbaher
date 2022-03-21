@@ -1,0 +1,186 @@
+{% extends "employerMaster.html" %}
+{% block content %}
+{% load static %}
+
+<div class="container-fluid pt-2 pb-5 px-5">
+    <div class="container-fluid px-5">
+
+
+        <!--user details start  -->
+
+
+        <div class="profile-box">
+            <div class="profile-content">
+                <center>
+                    <h4>Profile</h4>
+                </center>
+                <form action="{% url 'edit_employer_profile' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="upload"
+                        style="background-image: url('{% static 'images/photo_upload.jpg' %}'); background-repeat: no-repeat;background-size: 100%">
+                        <img src="/static/images/{{employer_details.photo}}" alt="" width="100px" class="profile-photo" id="output">
+                        <div class="round">
+                            <input type="file" onchange="loadFile(event)" name="employer_photo">
+                            <i class="fa-solid fa-camera"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="container-fluid p-4">
+
+                            <!-- 2 column grid layout with text inputs for the first and last names -->
+                            <div class="row mb-4">
+                                <h5>Personal Details</h5>
+                                <div class="col">
+                                    <div class="form-outline">
+                                        <input type="text" id="form6Example1" name="first_Name" class="form-control"
+                                            value="{{employer_details.first_Name}}" />
+                                        <label class="form-label" for="form6Example1">First name</label>
+                                    </div>
+                                </div>
+                                <input type="text" value="{{employer_details.id}}" hidden name="employer_id">
+                                <div class="col">
+                                    <div class="form-outline">
+                                        <input type="text" id="form6Example2" name="last_Name" class="form-control"
+                                            value="{{employer_details.last_Name}}" />
+                                        <label class="form-label" for="form6Example2">Last name</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col">
+                                    <div class="form-outline">
+                                        <input type="email" id="form6Example1" class="form-control"
+                                            name="personal_Email" value="{{employer_details.personal_Email}}" />
+                                        <label class="form-label" for="form6Example1">E-mail</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-outline">
+                                        <input type="text" id="form6Example2" class="form-control" name="phone_Number"
+                                            value="{{employer_details.phone_Number}}" />
+                                        <label class="form-label" for="form6Example2">Phone Number</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Text input -->
+                            <div class="form-outline mb-4">
+                                <input type="text" id="form6Example4" class="form-control" name="address"
+                                    value="{{employer_details.address}}" />
+                                <label class="form-label" for="form6Example4">Address</label>
+                            </div>
+
+                            <!-- radio button -->
+                            <div class="container mb-4">
+                                <h5>Gender</h5>
+                                <div class="btn-group">
+                                    <input type="radio" class="btn-check" name="options" value="male" id="option1"
+                                        autocomplete="off" checked />
+                                    <label class="btn btn-danger" for="option1">Male</label>
+
+                                    <input type="radio" class="btn-check" name="options" value="female" id="option2"
+                                        autocomplete="off" />
+                                    <label class="btn btn-danger" for="option2">Female</label>
+
+                                    <input type="radio" class="btn-check" name="options" value="other" id="option3"
+                                        autocomplete="off" />
+                                    <label class="btn btn-danger" for="option3">Other</label>
+                                </div>
+                            </div>
+                            <script>
+                                gender = '{{employer_details.gender}}'
+                                if (gender == 'male') {
+                                    document.getElementById('option1').checked = true
+                                }
+                                else if (gender == 'female') {
+                                    document.getElementById('option2').checked = true
+                                }
+                                else {
+                                    document.getElementById('option3').checked = true
+                                }
+                            </script>
+                            <!-- company Account details ends -->
+
+                            <!-- Submit button -->
+                            <button type="submit" class="btn btn-primary btn-block">Update</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- user details end -->
+
+        <!-- Bank Account Details start -->
+
+        <div class="profile-box mt-3">
+            <div class="profile-content">
+                <center>
+                    <h4>Bank Account Details</h4>
+                </center>
+                <div>
+                    <div class="container-fluid p-4">
+                        <form action="{% url 'update_employer_admin' %}" method="POST">
+                            {% csrf_token %}
+                            <!-- 2 column grid layout with text inputs for the first and last names -->
+                            <div class="row mb-4">
+                                <h5>Account Details</h5>
+                                <div class="col">
+                                    <div class="form-outline">
+                                        <input type="text" id="form6Example1" name="first_Name" class="form-control"
+                                            value="{{employer_details.account_Holder_Name}}" />
+                                        <label class="form-label" for="form6Example1">Account Holder Name</label>
+                                    </div>
+                                </div>
+                                <input type="text" value="{{employer_details.id}}" hidden name="employer_id">
+                                <div class="col">
+                                    <div class="form-outline">
+                                        <input type="text" id="form6Example2" name="last_Name" class="form-control"
+                                            value="{{employer_details.bank_Name}}" />
+                                        <label class="form-label" for="form6Example2">Bank Name</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col">
+                                    <div class="form-outline">
+                                        <input type="email" id="form6Example1" class="form-control"
+                                            name="personal_Email" value="{{employer_details.branch_Name}}" />
+                                        <label class="form-label" for="form6Example1">Branch Name</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-outline">
+                                        <input type="text" id="form6Example2" class="form-control" name="phone_Number"
+                                            value="{{employer_details.IFSC_Code}}" />
+                                        <label class="form-label" for="form6Example2">IFSC Code</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Text input -->
+                            <div class="form-outline mb-4">
+                                <input type="text" id="form6Example4" class="form-control" name="address"
+                                    value="{{employer_details.account_Number}}" />
+                                <label class="form-label" for="form6Example4">Account Number</label>
+                            </div>
+                            <!-- company Account details ends -->
+
+                            <!-- Submit button -->
+                            <button type="submit" class="btn btn-primary btn-block">Update</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- bank details end  -->
+
+
+    </div>
+</div>
+
+
+
+{% endblock %}

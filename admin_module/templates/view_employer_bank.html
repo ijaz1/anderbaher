@@ -1,0 +1,56 @@
+{% extends "master_admin.html" %}
+{% block content %}
+{% load static %}
+
+
+
+<div class="container-fluid pt-3 pb-5 px-5">
+    <div class="container-fluid px-5">
+
+        <!--user details start  -->
+
+        <div class="profile-box">
+            <div class="container-fluid">
+                <center>
+                    <h3 class="p-2">Employees Bank Details</h3>
+                </center>
+            </div>
+
+            <div class="container-fluid">
+                <table class="table">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Name</th>
+                            <th>E-mail</th>
+                            <th>phone Number</th>
+                            <th>Account Holder Name</th>
+                            <th>Bank Name</th>
+                            <th>Branch Name</th>
+                            <th>Account Number</th>
+                            <th>IFSC</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for terminated_employees in employer_bank %}
+                        <tr>
+                            <td>{{terminated_employees.first_Name}}&nbsp;{{terminated_employees.last_Name}}</td>
+                            <td>{{terminated_employees.personal_Email}}</td>
+                            <td>{{terminated_employees.phone_Number}}</td>
+                            <td>{{terminated_employees.account_Holder_Name}}</td>
+                            <td>{{terminated_employees.bank_Name}}</td>
+                            <td>{{terminated_employees.branch_Name}}</td>
+                            <td>{{terminated_employees.account_Number}}</td>
+                            <td>{{terminated_employees.IFSC_Code}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

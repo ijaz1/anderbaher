@@ -1,0 +1,50 @@
+{% extends "master_admin.html" %}
+{% block content %}
+{% load static %}
+
+
+<div class="container-fluid pt-3 pb-5 px-2">
+    <div class="container-fluid">
+
+        <!--user details start  -->
+
+        <div class="profile-box">
+            <center><h4>Checkout List</h4></center>
+            <div class="container-fluid table-responsive">
+                <table class="table">
+                    <form action="">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>NAME</th>
+                                <th>E-MAIL ID</th>
+                                <th>PHONE NUMBER</th>
+                                <th>VILLA / APARTMENT / PROPERTY</th>
+                                <th>CITY / ZIP</th>
+                                <th>Estimated Budget</th>
+                                <th>When To Start</th>
+                                <th>Check Out</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for estimated_value in checked %}
+                            <tr>
+                                <td>{{estimated_value.name}}</td>
+                                <td>{{estimated_value.email}}</td>
+                                <td>{{estimated_value.phone}}</td>
+                                <td>{{estimated_value.villa_apartment_property}}</td>
+                                <td>{{estimated_value.city_zip}}</td>
+                                <td>{{estimated_value.estimated_budget}}</td>
+                                <td>{{estimated_value.when_to_start_work}}</td>
+                                <td style="color: red;">{{estimated_value.checkout}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </form>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

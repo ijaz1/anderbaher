@@ -1,0 +1,147 @@
+{% extends "master_admin.html" %}
+{% block content %}
+{% load static %}
+
+
+
+<div class="container-fluid pt-3 pb-5 px-5">
+    <div class="container-fluid px-5">
+        <div class="profile-box">
+
+            <center>
+                <h4>Work Assign</h4>
+            </center>
+            <form class="px-5 py-2" action="{% url 'work_assigning' %}" method="POST">
+                {% csrf_token %}
+                <!-- 2 column grid layout with text inputs for the first and last names -->
+
+                <div class="row mb-4">
+                    <div class="col">
+                        <select class="form-select" aria-label="Default select example" name="employer_id">
+                            <option selected>Select Employer</option>
+                            {% for employer_name in employer_name %}
+                            <option value="{{employer_name.id}}">
+                                {{employer_name.first_Name}}&nbsp;{{employer_name.last_Name}}&nbsp;&nbsp;{{employer_name.title_Position}}&nbsp;{{employer_name.job_Title}}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col">
+                        <div class="form-outline">
+                            <input type="text" id="form6Example2" class="form-control" name="task" />
+                            <label class="form-label" for="form6Example2">Task</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <h5>Schedule Date And Time</h5>
+                    <div class="col">
+                        <div class="form-outline">
+                            <input type="date" id="form6Example2" class="form-control" name="starting_date"/>
+                            <label class="form-label" for="form6Example2">Starting Date</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-outline">
+                            <input type="date" id="form6Example2" class="form-control" name="ending_date"/>
+                            <label class="form-label" for="form6Example2">Ending Date</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col">
+                        <div class="form-outline">
+                            <input type="time" id="form6Example2" class="form-control" name="starting_time"/>
+                            <label class="form-label" for="form6Example2">Starting Time</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-outline">
+                            <input type="time" id="form6Example2" class="form-control" name="ending_time"/>
+                            <label class="form-label" for="form6Example2">Ending Time</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <h5>Client Name</h5>
+                    <div class="col">
+                        <div class="form-outline">
+                            <input type="text" id="form6Example2" class="form-control" name="client_First_name"/>
+                            <label class="form-label" for="form6Example2">First Name</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-outline">
+                            <input type="text" id="form6Example2" class="form-control" name="Client_second_name"/>
+                            <label class="form-label" for="form6Example2">Last Name</label>
+                        </div>
+                    </div>
+                </div>
+                <!-- radio button -->
+                <div class="container mb-4">
+                    <h5>Gender</h5>
+                    <div class="btn-group">
+                        <input type="radio" class="btn-check" name="i" value="male" id="option1"
+                            autocomplete="off" checked />
+                        <label class="btn btn-danger" for="option1">Male</label>
+
+                        <input type="radio" class="btn-check" name="i" value="female" id="option2"
+                            autocomplete="off" />
+                        <label class="btn btn-danger" for="option2">Female</label>
+
+                        <input type="radio" class="btn-check" name="i" value="other" id="option3"
+                            autocomplete="off" />
+                        <label class="btn btn-danger" for="option3">Other</label>
+                    </div>
+                </div>
+
+                <h5>Client Address</h5>
+                <div class="form-outline mb-4">
+                    <input type="text" id="form6Example4" class="form-control" name="street_address"/>
+                    <label class="form-label" for="form6Example4">Street Address</label>
+                </div>
+
+
+                <div class="row mb-4">
+                    <div class="col">
+                        <div class="form-outline">
+                            <input type="text" id="form6Example2" class="form-control" name="city"/>
+                            <label class="form-label" for="form6Example2">City</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-outline">
+                            <input type="text" id="form6Example2" class="form-control" name="zip_code"/>
+                            <label class="form-label" for="form6Example2">ZIP Code</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Message input -->
+                <div class="form-outline mb-4">
+                    <textarea class="form-control" id="form6Example7" rows="4" name="additional_information"></textarea>
+                    <label class="form-label" for="form6Example7">Additional information</label>
+                </div>
+
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary btn-block">Assign Work</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+<!-- <div class="container-fluid pt-3 pb-5 px-5">
+    <div class="container-fluid px-5">
+        <div class="profile-box">
+
+
+
+        </div>
+    </div>
+</div> -->

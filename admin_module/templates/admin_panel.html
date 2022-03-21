@@ -1,0 +1,92 @@
+{% extends "master_admin.html" %}
+{% block content %}
+{% load static %}
+
+<div class="container-fluid pt-2 px-5">
+
+    <!-- col box start -->
+
+    <div class="cardBox">
+        <div class="card">
+            <div>
+                <div class="numbers">23</div>
+                <div class="cardName">Todays Views</div>
+            </div>
+            <div class="iconBx">
+                <i class="fa-regular fa-eye"></i>
+            </div>
+        </div>
+
+        <div class="card">
+            <div>
+                <div class="numbers">18</div>
+                <div class="cardName">Todays Request</div>
+            </div>
+            <div class="iconBx">
+                <i class="fa-solid fa-user-check"></i>
+            </div>
+        </div>
+
+        <div class="card">
+            <div>
+                <div class="numbers">1,999</div>
+                <div class="cardName">Total Views</div>
+            </div>
+            <div class="iconBx">
+                <i class="fa-solid fa-eye"></i>
+            </div>
+        </div>
+
+        <div class="card">
+            <div>
+                <div class="numbers">498</div>
+                <div class="cardName">Total Request</div>
+            </div>
+            <div class="iconBx">
+                <i class="fa-solid fa-users"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- col box end -->
+
+    <!-- Add Chart -->
+
+    <div class="graphBox">
+
+        <div class="box">
+            <canvas id="myChart"></canvas>
+        </div>
+        <div class="box">
+            <canvas id="earning"></canvas>
+        </div>
+    </div>
+
+    <!-- work status start -->
+
+    <div class="container-fluid pt-3 pb-5 px-5">
+        <div class="container-fluid px-5">
+            <div class="profile-box">
+                <center><h4>Work Status</h4></center>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Employer Name</th>
+                                <th>Work Status</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody> 
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- work status end -->
+</div>
+
+
+
+{% endblock %}

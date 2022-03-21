@@ -1,0 +1,293 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+
+}
+
+.containere {
+    position: relative;
+    width: 100%;
+
+}
+
+.navigation {
+    position: fixed;
+    width: 250px;
+    height: 100%;
+    background-color: #313233;
+    border-left: 10px solid #313233;
+    transition: 0.5s;
+    overflow: hidden;
+}
+
+.navigation.active {
+    width: 70px;
+}
+
+.navigation ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0;
+}
+
+.navigation ul li {
+    position: relative;
+    width: 100%;
+    list-style: none;
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+}
+
+.navigation ul li:hover,
+.navigation ul li.hovered {
+    background-color: rgb(211, 255, 200);
+}
+
+.navigation ul li:nth-child(1) {
+    margin-bottom: 40px;
+    pointer-events: none;
+}
+
+.navigation ul li a {
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: white;
+}
+
+.navigation ul li:hover a,
+.navigation ul li.hovered a {
+    color: #313233;
+}
+
+.navigation ul li a .icon {
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+}
+
+.navigation ul li a .title {
+    position: relative;
+    display: block;
+    padding: 0 10px;
+    height: 60px;
+    line-height: 60px;
+    text-align: start;
+    white-space: nowrap;
+}
+
+/* curve outside */
+.navigation ul li:hover a::before,
+.navigation ul li.hovered a::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: 35px 35px 0 10px rgb(211, 255, 200);
+    pointer-events: none;
+}
+
+.navigation ul li:hover a::after,
+.navigation ul li.hovered a::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: 35px -35px 0 10px rgb(211, 255, 200);
+    pointer-events: none;
+}
+
+.main {
+    position: absolute;
+    width: calc(100% - 250px);
+    left: 250px;
+    min-height: 100vh;
+    background-color: rgb(211, 255, 200);
+    transition: 0.5s;
+}
+
+.main.active {
+    width: calc(100% - 70px);
+    left: 70px;
+}
+
+.topbar {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.toggle {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5em;
+    cursor: pointer;
+}
+
+.toggle span {
+    transition: 0.3s ease-in-out;
+}
+
+.toggle.turn span {
+    transform: rotate(-90deg);
+}
+
+.user {
+    position: relative;
+    min-width: 40px;
+    overflow: hidden;
+}
+
+.header {
+    float: right;
+}
+
+.recoverButton {
+    background-color: rgb(22, 243, 33);
+    color: red;
+}
+
+.photo-add-button {
+    padding-top: 32px;
+}
+
+/* admin dash card */
+
+.cardBox {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 30px;
+}
+
+.cardBox .card {
+    position: relative;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    cursor: pointer;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+}
+
+.cardBox .card .numbers {
+    position: relative;
+    font-weight: 500;
+    font-size: 2rem;
+}
+
+.cardBox .card .cardName {
+    font-size: 1.1rem;
+    margin-top: 5px;
+}
+
+.cardBox .card .iconBx {
+    font-size: 2.5rem;
+    color: #4f8b35;
+}
+
+/* graph box */
+
+.graphBox {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 30px;
+    min-height: 200px;
+}
+
+.graphBox .box {
+    position: relative;
+    background-color: #fff;
+    padding: 20px;
+    width: 100%;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+}
+
+.profile-box {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+}
+
+.upload {
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    position: relative;
+    margin: auto;
+}
+
+.profile-photo {
+    border: none;
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+}
+
+.upload .round {
+    position: absolute;
+    bottom: 0%;
+    right: 0%;
+    background-color: #fff;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    border-radius: 20px;
+    line-height: 33px;
+    overflow: hidden;
+}
+
+.upload .round input[type='file'] {
+    position: absolute;
+    transform: scale(2);
+    opacity: 0;
+}
+
+input[type='file']::-webkit-file-upload-button {
+    cursor: pointer;
+}
+.employer_photo{
+    width: 80px;
+    border-radius: 20px;
+}

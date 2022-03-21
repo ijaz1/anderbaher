@@ -1,0 +1,100 @@
+{% extends "master_admin.html" %}
+{% block content %}
+{% load static %}
+
+
+<div class="container-fluid pt-3 pb-5 px-5">
+    <div class="container-fluid px-5">
+
+        <!--user details start  -->
+
+        <div class="profile-box">
+            <div class="">
+                <center>
+                    <h3>MANAGE WEBSITE</h3>
+                </center>
+            </div>
+            <header class="p-0 mb- ">
+                <div class="container-fluid">
+                    <div
+                        class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start header">
+
+                        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                            <li>
+                                <div class="dropdown text-end p-2">
+                                    <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle btn btn-outline-dark"
+                                        id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Services
+                                    </a>
+                                    <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+                                        <li><a class="dropdown-item" data-bs-target="#fullservbooking" data-bs-toggle=""
+                                                href="">Add
+                                                Photo</a></li>
+                                        <li><a class="dropdown-item" data-bs-target="#fullservbooking" data-bs-toggle=""
+                                                href="{% url 'edit_photo' %}">Edit Photo</a></li>
+                                        <li><a class="dropdown-item" data-bs-target="#fullservbooking" data-bs-toggle=""
+                                                href="{% url 'view_deleted_photo' %}">View Deleted Photo</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="p-2">
+                                    <a style="color: rgb(255, 255, 255);" class="text-decoration-none btn btn-black"
+                                        href="{% url 'editContact' %}">Contact
+                                        Us</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+            <br>
+
+            <!-- Add Photo start -->
+            <div class="container pt-2 pb-3 px-5" id="custom-cards">
+                <h4 class="border-bottom">Add Photo</h4>
+                <form class="row g-3" action="{% url 'upload_category_photo' %}" method="POST"
+                    enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="col-md-6">
+                        <label for="inputEmail4" class="form-label">PHOTO</label>
+                        <div class="input-group mb-3">
+                            <input type="file" class="form-control" name="photo" onchange="loadFile(event)">
+                        </div>
+                        <img id="output" width="200px">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputEmail4" class="form-label">TITLE</label>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" name="title">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputEmail4" class="form-label">CATEGORY</label>
+                        <select class="form-select" aria-label="Default select example" name="category">
+                            <option selected value="balcony">Balcony</option>
+                            <option value="garden">Garden</option>
+                            <option value="terrace">Terrace</option>
+                            <option value="plants">Plants</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-outline">
+                            <textarea class="form-control" name="discription" id="textAreaExample" rows="4"></textarea>
+                            <label class="form-label" for="textAreaExample">DISCRIPTION</label>
+                        </div>
+                    </div>
+                    <input type="text" value="available" name="status" hidden>
+                    <div class="col-12 photo-add-button">
+                        <button class="btn btn-primary w-100" type="submit">Upload</button>
+                    </div>
+                </form>
+            </div>
+            <!-- Add Photo end -->
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

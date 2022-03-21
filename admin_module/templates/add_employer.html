@@ -1,0 +1,181 @@
+{% extends "master_admin.html" %}
+{% block content %}
+{% load static %}
+
+
+<div class="container-fluid pt-2 pb-5 px-5">
+    <div class="container-fluid px-5">
+
+        <!--user details start  -->
+
+        <div class="profile-box">
+            <div class="container-fluid p-4">
+                <center>
+                    <h3 class="pb-2">Add Employer Form</h3>
+                </center>
+                <form action="{% url 'adding_employer_details' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <!-- 2 column grid layout with text inputs for the first and last names -->
+
+                    <div class="upload"
+                        style="background-image: url('{% static 'images/photo_upload.jpg' %}'); background-repeat: no-repeat;background-size: 100%">
+                        <img src="" alt="" width="100px" class="profile-photo" id="output">
+                        <div class="round">
+                            <input type="file" onchange="loadFile(event)" name="employer_photo">
+                            <i class="fa-solid fa-camera"></i>
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <h5>Personal Details</h5>
+                        <div class="col">
+                            <div class="form-outline">
+                                <input type="text" id="form6Example1" name="first_Name" class="form-control" />
+                                <label class="form-label" for="form6Example1">First name</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-outline">
+                                <input type="text" id="form6Example2" name="last_Name" class="form-control" />
+                                <label class="form-label" for="form6Example2">Last name</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-outline">
+                                <input type="date" id="form6Example2" class="form-control" name="date_of_birth" />
+                                <label class="form-label" for="form6Example2">Date Of Birth</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col">
+                            <div class="form-outline">
+                                <input type="text" id="form6Example1" name="job_Title" class="form-control" />
+                                <label class="form-label" for="form6Example1">Job Title</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-outline">
+                                <input type="text" id="form6Example2" name="title_Position" class="form-control" />
+                                <label class="form-label" for="form6Example2">Title Position</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+
+                        <div class="col">
+                            <div class="form-outline">
+                                <input type="email" id="form6Example1" class="form-control" name="personal_Email" />
+                                <label class="form-label" for="form6Example1">E-mail</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-outline">
+                                <input type="text" id="form6Example2" class="form-control" name="phone_Number" />
+                                <label class="form-label" for="form6Example2">Phone Number</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Text input -->
+                    <div class="form-outline mb-4">
+                        <input type="text" id="form6Example4" class="form-control" name="address" />
+                        <label class="form-label" for="form6Example4">Address</label>
+                    </div>
+
+                    <!-- radio button -->
+                    <div class="row mb-4">
+                        <h5>Gender</h5>
+                        <div class="col">
+                            <div class="btn-group">
+                                <input type="radio" class="btn-check" name="options" value="male" id="option1"
+                                    autocomplete="off" checked />
+                                <label class="btn btn-danger" for="option1">Male</label>
+
+                                <input type="radio" class="btn-check" name="options" value="female" id="option2"
+                                    autocomplete="off" />
+                                <label class="btn btn-danger" for="option2">Female</label>
+
+                                <input type="radio" class="btn-check" name="options" value="other" id="option3"
+                                    autocomplete="off" />
+                                <label class="btn btn-danger" for="option3">Other</label>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <label class="form-label" for="customFile">ID PROOF</label>
+                            <input type="file" class="form-control" name="id_proof" id="customFile" />
+                        </div>
+                    </div>
+
+                    <!-- Bank Account Details -->
+                    <div>
+                        <h5>Bank Account Details</h5>
+                        <div class="form-outline mb-4">
+                            <input type="text" id="form6Example4" class="form-control" name="account_Holder_Name" />
+                            <label class="form-label" for="form6Example4">Account Holder Name</label>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col">
+                                <div class="form-outline">
+                                    <input type="text" name="bank_Name" id="form6Example1" class="form-control" />
+                                    <label class="form-label" for="form6Example1">Bank Name</label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-outline">
+                                    <input type="text" id="form6Example2" name="branch_Name" class="form-control" />
+                                    <label class="form-label" for="form6Example2">Branch Name</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col">
+                                <div class="form-outline">
+                                    <input type="text" id="form6Example1" class="form-control" name="account_Number" />
+                                    <label class="form-label" for="form6Example1">Account Number</label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-outline">
+                                    <input type="text" id="form6Example2" class="form-control" name="IFSC_Code" />
+                                    <label class="form-label" for="form6Example2">IFSC Code</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bank Account Details Ends -->
+
+                    <!-- company Account details starts -->
+                    <div class="row mb-4">
+                        <h5>Ander Baher Account Details</h5>
+                        <div class="col">
+                            <div class="form-outline">
+                                <input type="email" id="form6Example1" class="form-control" name="signIn_Email" />
+                                <label class="form-label" for="form6Example1">Sign In E-mail</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-outline">
+                                <input type="text" id="form6Example2" class="form-control" name="password" />
+                                <label class="form-label" for="form6Example2">Sign In Password</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- company Account details ends -->
+
+                    <!-- Submit button -->
+                    <button type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

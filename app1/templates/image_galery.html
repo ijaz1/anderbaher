@@ -1,0 +1,52 @@
+{% extends "index_Master.html" %}
+{% block content %}
+{% load static %}
+
+
+<!-- <div class="container-img p-5">
+    {% for photo in photo %}
+    <div class="gallery-container">
+        <div class="image">
+            <a href="/static/images/{{photo.photo}}"><img src="/static/images/{{photo.photo}}" alt=""></a>
+        </div>
+        <div class="text">
+            <h5>{{photo.title}}</h5>
+        </div>
+        <p>{{photo.discription}}</p>
+    </div>
+    {% endfor %}
+</div> -->
+<div class="container p-5">
+    <div class="row">
+        {% for photo in photo %}
+        <div class="col-3">
+            <a href="/static/images/{{photo.photo}}"><img style="border-radius: 10px;" src="/static/images/{{photo.photo}}" alt="" width="250px"></a>
+            <h5>{{photo.title}}</h5>
+            <p>{{photo.discription}}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<!-- <div class="row p-5">
+    <div class="dynamic-image">
+
+        &nbsp;&nbsp;
+    </div>
+</div> -->
+
+
+{% endblock %}
+
+
+<!-- <div class="container">
+    <center>
+        <h1 class="mt-5">BALCONY</h1>
+    </center>
+    {% for photo in photo %}
+    <div class="gallery">
+
+        
+        <a href="/static/images/{{photo.photo}}"><img src="/static/images/{{photo.photo}}" alt=""></a>
+    </div>
+    {% endfor %}
+</div> -->
